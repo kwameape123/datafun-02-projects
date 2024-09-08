@@ -3,7 +3,7 @@ folders to organise our projects under various conditions. Conditions include;
 1. Creating folders for a series of years.
 2. Creating folders given a list. 
 3. Creating folders given a range.
-4. Creating folders periodically
+4. Creating folders periodically.
 Note: The goal is to have a script that can be edited to fit various circumstances.
 This script also contains functions we can call upon in other projects.
 '''
@@ -60,7 +60,7 @@ def create_folders_for_range(identifier:str,start_year:int,end_year:int)->None:
     '''
     for year in range(start_year,end_year+1):
         folder_name = f'{identifier}_{year}'
-        year_path = project_path.joinpath(folder_name)
+        year_path = data_path.joinpath(folder_name)
         year_path.mkdir(exist_ok = True)
 
         #Log the function call and its arguments using f-string
@@ -75,7 +75,7 @@ def create_folders_from_list(folder_list:list)->None:
     1. Folder_list which is a list of names is the only argument for this function
      '''
     for name in folder_list:
-         name_path = project_path.joinpath(name)
+         name_path = data_path.joinpath(name)
          name_path.mkdir(exist_ok=True)
 
          #Log the function call and its arguments using f-string
@@ -89,7 +89,7 @@ def create_prefixed_folders(folder_list,prefix:str)->None:
     '''Function Arguments'''
     for name in folder_list:
         folder_name = F'{prefix}-{name}'
-        name_path = project_path.joinpath(folder_name)
+        name_path = data_path.joinpath(folder_name)
         name_path.mkdir(exist_ok=True)
     print(f"FUNCTION CALLED: create_prefixed_folders with {folder_list} and {prefix}")
 
@@ -104,7 +104,7 @@ def create_folders_periodically(duration_seconds:int, maximum_number_of_folders:
     #the index variable servers as a counter to help in the iteration process.
     while index < maximum_number_of_folders:
             folder_name = F'folder_{index}'
-            name_path = project_path.joinpath(folder_name)
+            name_path = data_path.joinpath(folder_name)
             name_path.mkdir(exist_ok=True)
             time.sleep(duration_seconds)
             index += 1
